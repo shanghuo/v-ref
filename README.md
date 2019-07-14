@@ -1,8 +1,8 @@
 ---
 permalink: /index.html
-title: "V语言参考手册 | v-ref.com"
+title: "V语言参考手册"
 description: "这是一个新兴的语言，虽然有时不是那么稳定，又或者许多功能还在实现途中，但是你不得不相信开源社区的强大！它来了，它改变着！ —— V lang"
-tags: [V语言, vlang, 参考手册]
+keywords: "V语言,vlang,参考手册"
 ---
 # V语言参考手册
 
