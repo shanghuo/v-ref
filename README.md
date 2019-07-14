@@ -3,6 +3,8 @@ permalink: /index.html
 ---
 # V语言参考手册
 
+## [v-ref.com](//v-ref.com)
+
 - V语言文档(中文翻译版) [v-ref.com/docs.html](//v-ref.com/docs.html)
 - V语言官网 [vlang.io](//vlang.io)
 - 参考手册(预计7月底前置于本站)
