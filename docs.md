@@ -1133,6 +1133,7 @@ type
 ## 运算符
 Appendix II: Operators
 
+基本运算符
 <table>
 <tr><th>符号</th><th>说明</th><th>英文</th><th>数据类型</th></tr>
 <tr><td>+</td><td>加</td><td>sum</td><td>integers, floats, strings</td></tr>
@@ -1147,6 +1148,7 @@ Appendix II: Operators
 <tr><td>>></td><td>右移</td><td>right shift</td><td>integer >> unsigned integer</td></tr>
 </table>
 
+运算符优先级
 <table>
 <tr><th>优先级</th><th>运算符</th></tr>
 <tr><td>5</td><td>*  /  %  &lt;&lt;  >>  &</td></tr>
