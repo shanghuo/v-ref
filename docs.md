@@ -3,6 +3,11 @@ permalink: /docs.html
 ---
 # V语言文档
 
+- 中文手册：[https://v-ref.com/](https://v-ref.com/)
+- 中文文档：[https://v-ref.com/docs.html](https://v-ref.com/docs.html)
+- 语言官网：[https://vlang.io](https://vlang.io)
+- 官方代码：[https://github.com/vlang](https://github.com/vlang)
+
 ## 介绍
 
 V是一种静态类型的编译编程语言，用于构建可维护的软件。
@@ -186,16 +191,16 @@ mut nums := [1, 2, 3]
 println(nums) // "[1, 2, 3]"
 println(nums[1]) // "2"
 
-nums &lt;&lt; 4
+nums << 4
 println(nums) // "[1, 2, 3, 4]"
 
-nums &lt;&lt; [5, 6, 7]
+nums << [5, 6, 7]
 println(nums) // "[1, 2, 3, 4, 5, 6, 7]"
 
 mut names := ['John']
-names &lt;&lt; 'Peter' 
-names &lt;&lt; 'Sam' 
-// 名字 &lt;&lt; 10  &lt;-- 这不会通过编译。`names`是一个字符串数组 
+names << 'Peter' 
+names << 'Sam' 
+// 名字 << 10  <-- 这不会通过编译。`names`是一个字符串数组 
 println(names.len) // "3" 
 println('Alex' in names) // "false"
 
@@ -210,7 +215,7 @@ ids := [0 ; nr_ids] // 这会创建一个包含50个零的数组
 
 所有元素必须具有相同的类型。`[1, 'a']` 无法通过编译。
 
-`&lt;&lt;`是一个将值附加到数组末尾的运算符。它还可以附加到整个数组。
+`<<`是一个将值附加到数组末尾的运算符。它还可以附加到整个数组。
 `.len`返回数组的长度。请注意，它是一个只读属性，用户无法修改。默认情况下，所有导出的字段都是只读的。
 `val in array`：如果数组包含`val`，那么返回true.
 
@@ -238,8 +243,8 @@ numbers := { // TODO: 此语法尚未实现
 ```
 a := 10 
 b := 20 
-if a &lt; b { 
-	println('$a &lt; $b') 
+if a < b { 
+	println('$a < $b') 
 } else if a > b { 
 	println('$a > $b') 
 } else { 
@@ -322,7 +327,7 @@ for i, num in numbers {
 ```
 mut sum := 0
 mut i := 0
-for i &lt;= 100 {
+for i <= 100 {
 	sum += i
 	i++
 }
@@ -345,7 +350,7 @@ println(num) // ==> "10"
 上例中，for循环的条件省略了，这是允许的，会导致无限循环。
 
 ```
-for i := 0; i &lt; 10; i++ {
+for i := 0; i < 10; i++ {
 	println(i)
 }
 ```
@@ -512,7 +517,7 @@ println(user.is_registered) // ==> "true"
 
 ```
 fn multiply_by_2(arr mut []int) {
-	for i := 0; i &lt; arr.len; i++ {
+	for i := 0; i < arr.len; i++ {
 		arr[i] *= 2
 	}
 }
@@ -747,23 +752,23 @@ V没有办法强制打开一个可选项（比如`Rust`的`unwrap()`或`Swift`�
 Generics（7月实现）
 
 ```
-struct Repo&lt;T> {
+struct Repo<T> {
 	db DB
 }
 
-fn new_repo&lt;T>(db DB) Repo&lt;T> {
-	return Repo&lt;T>{db: db}
+fn new_repo<T>(db DB) Repo<T> {
+	return Repo<T>{db: db}
 }
 
 // 这是一个通用函数。V将为它使用的每种类型生成它。
-fn (r Repo&lt;T>) find_by_id(id int) ?T {  
+fn (r Repo<T>) find_by_id(id int) ?T {  
 	table_name := T.name //在此示例中，获取类型的名称会为我们提供表名 
-	return r.db.query_one&lt;T>('select * from $table_name where id = ?', id)
+	return r.db.query_one<T>('select * from $table_name where id = ?', id)
 }
 
 db := new_db()
-users_repo := new_repo&lt;User>(db)
-posts_repo := new_repo&lt;Post>(db)
+users_repo := new_repo<User>(db)
+posts_repo := new_repo<Post>(db)
 user := users_repo.find_by_id(1)? 
 post := posts_repo.find_by_id(1)?
 
@@ -914,7 +919,7 @@ Reflection via codegen
 
 ```
 // TODO: 计划在七月实现
-fn decode&lt;T>(data string) T {
+fn decode<T>(data string) T {
         mut result := T{}
         for field in T.fields {
                 if field.typ == 'string' {
@@ -1005,15 +1010,15 @@ V可以将您的C / C ++代码转换为人类可读的V代码。
 让我们先创建一个简单的程序`test.cpp`：
 
 ```
-#include &lt;vector>
-#include &lt;string>
-#include &lt;iostream>
+#include <vector>
+#include <string>
+#include <iostream>
 
 int main() {
-        std::vector&lt;std::string> s;
+        std::vector<std::string> s;
         s.push_back("V is ");
         s.push_back("awesome");
-        std::cout &lt;&lt; s.size() &lt;&lt; std::endl;
+        std::cout << s.size() << std::endl;
         return 0;
 }
 ```
@@ -1023,8 +1028,8 @@ int main() {
 ```
 fn main {
         mut s := []
-	s &lt;&lt; 'V is '
-	s &lt;&lt; 'awesome'
+	s << 'V is '
+	s << 'awesome'
 	println(s.len) 
 }
 ```
@@ -1162,7 +1167,7 @@ Appendix II: Operators
 ```
 +=   -=   *=   /=   %=
 &=   |=   ^=
->>=  &lt;&lt;=
+>>=  <<=
 ```
 
 <script src="https://snanq.github.io/SmallMD/smd4.js"></script>
