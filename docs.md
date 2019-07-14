@@ -1133,26 +1133,28 @@ type
 ## 运算符
 Appendix II: Operators
 
-符号|说明|英文|数据类型
----|---|---|---
-+|加|sum|integers, floats, strings
--|减|difference|integers, floats 
-*|乘|product|integers, floats 
-/|除|quotient|integers, floats 
-%|余|remainder|integers
-&|位与|bitwise AND|integers
-||位或|bitwise OR|integers
-^|位异或|bitwise XOR|integers
-&lt;&lt;|左移|left shift|integer &lt;&lt; unsigned integer
->>|右移|right shift|integer >> unsigned integer
+<table>
+<tr><th>符号</th><th>说明</th><th>英文</th><th>数据类型</th></tr>
+<tr><td>+</td><td>加</td><td>sum</td><td>integers, floats, strings</td></tr>
+<tr><td>-</td><td>减</td><td>difference</td><td>integers, floats</td></tr>
+<tr><td>*</td><td>乘</td><td>product</td><td>integers, floats</td></tr>
+<tr><td>/</td><td>除</td><td>quotient</td><td>integers, floats</td></tr>
+<tr><td>%</td><td>余</td><td>remainder</td><td>integers</td></tr>
+<tr><td>&</td><td>位与</td><td>bitwise AND</td><td>integers</td></tr>
+<tr><td>|</td><td>位或</td><td>bitwise OR</td><td>integers</td></tr>
+<tr><td>^</td><td>位异或</td><td>bitwise XOR</td><td>integers</td></tr>
+<tr><td>&lt;&lt;</td><td>左移</td><td>left shift</td><td>integer &lt;&lt; unsigned integer</td></tr>
+<tr><td>>></td><td>右移</td><td>right shift</td><td>integer >> unsigned integer</td></tr>
+</table>
 
-优先级|运算符
----|---
-5|*  /  %  &lt;&lt;  >>  & 
-4|+  -  |  ^
-3|==  !=  &lt;  &lt;=  >  >=
-2|&&
-1|||
+<table>
+<tr><th>优先级</th><th>运算符</th></tr>
+<tr><td>5</td><td>*  /  %  &lt;&lt;  >>  &</td></tr>
+<tr><td>4</td><td>+  -  |  ^</td></tr>
+<tr><td>3</td><td>==  !=  &lt;  &lt;=  >  >=</td></tr>
+<tr><td>2</td><td>&&</td></tr>
+<tr><td>1</td><td>||</td></tr>
+</table>
 
 分配运算符
 ```
