@@ -1,5 +1,5 @@
 ---
-permalink: /index.html
+permalink: /docs.html
 ---
 # V语言文档
 
