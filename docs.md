@@ -1,11 +1,14 @@
 ---
 permalink: /docs.html
+title: "V语言中文文档"
+description: "V语言中文文档 - 这是一个新兴的语言，虽然有时不是那么稳定，又或者许多功能还在实现途中，但是你不得不相信开源社区的强大！它来了，它改变着！ —— V lang"
+lang: "zh_CN"
 ---
 # V语言文档
 
 [手册首页](/)
-[文档原文](//vlang.io)
-[源存储库](//github.com/vlang/v)
+[文档原文](https://vlang.io)
+[源存储库](https://github.com/vlang/v)
 
 ## 介绍
 
