@@ -7,7 +7,7 @@ lang: "zh_CN"
 # V语言参考手册
 
 [中文文档](/docs.html)
-[语言官网](//vlang.io)
+[语言官网](https://vlang.io)
 
 ## 为什么要弄这个
 
