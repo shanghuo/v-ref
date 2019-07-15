@@ -10,7 +10,12 @@ var mainContent=document.getElementsByClassName("main-content");
 var mainContentNodesP=mainContent[0].getElementsByTagName("p")[0].childNodes;
 for(var i=0,j=0;i<mainContentNodesP.length&&j<3;i++){
  if(mainContentNodesP[i].tagName=="A"){
-  pageHeader[0].innerHTML+='<a href="'+mainContentNodesP[i].href+'" class="btn">'+mainContentNodesP[i].innerHTML+'</a>';
+  if(mainContentNodesP[i].href.substr(0,2)=="//"){
+   pageHeader[0].innerHTML+='<a href="'+mainContentNodesP[i].href+'" target="_blank" class="btn">'+mainContentNodesP[i].innerHTML+'</a>';
+  }
+  else{
+   pageHeader[0].innerHTML+='<a href="'+mainContentNodesP[i].href+'" class="btn">'+mainContentNodesP[i].innerHTML+'</a>';
+  }
   mainContentNodesP[i].parentNode.removeChild(mainContentNodesP[i]);
  }
 }
