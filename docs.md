@@ -3,10 +3,9 @@ permalink: /docs.html
 ---
 # V语言文档
 
-- 中文手册：[https://v-ref.com/](https://v-ref.com/)
-- 中文文档：[https://v-ref.com/docs.html](https://v-ref.com/docs.html)
-- 语言官网：[https://vlang.io](https://vlang.io)
-- 官方代码：[https://github.com/vlang](https://github.com/vlang)
+[手册首页](https://v-ref.com/)
+[文档原文](https://vlang.io)
+[源存储库](https://github.com/vlang)
 
 ## 介绍
 
@@ -1170,14 +1169,4 @@ Appendix II: Operators
 >>=  <<=
 ```
 
-<script src="https://snanq.github.io/SmallMD/smd4.js"></script>
-<script>  
-  /* 由于github的page中md，居然不支持表格！所以插入这段代码来兼容 */  
-  var smd = new SMD4();  
-  var p = document.getElementById("main_content").getElementsByTagName("p");  
-  for(var i=0;i<p.length;i++){  
-    if(p[i].innerHTML){  
-      p[i].innerHTML=smd.run(p[i].innerHTML);  
-    }  
-  }  
-</script>
+<script src="/script.js"></script>
