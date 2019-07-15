@@ -1,12 +1,3 @@
-/* 由于github的page中md，居然不支持表格！所以插入这段代码来兼容 */
-var smd = new SMD4();
-var p = document.getElementById("main_content").getElementsByTagName("p");
-for(var i=0;i<p.length;i++){
- if(p[i].innerHTML){
-  p[i].innerHTML=smd.run(p[i].innerHTML);
- }
-}
-
 /* 没错，就是这么直接的修改页面元素，实现页面效果 */
 var pageHeader=document.getElementsByClassName("page-header");
 var pageHeaderNodes=pageHeader[0].childNodes;
@@ -16,19 +7,22 @@ for(var i=0;i<pageHeaderNodes.length;i++){
  }
 }
 var mainContent=document.getElementsByClassName("main-content");
-var mainContentNodes=mainContent[0].childNodes;
-for(var i=0,k=0;i<mainContentNodes.length&&k<3;i++){
- if(mainContentNodes[i].tagName=="P"){
-  var mainContentNodesP=mainContentNodes[i].childNodes;
-  for(var j=0;j<mainContentNodesP.length&&k<3;j++,k++){
-   if(mainContentNodesP[j].tagName=="A"){
-    pageHeader[0].innerHTML+='<a href="'+mainContentNodesP[j].href+'" class="btn">'+mainContentNodesP[j].innerHTML+'</a>';
-    mainContentNodesP[j].parentNode.removeChild(mainContentNodesP[j]);
-   }
-  }
+var mainContentNodesP=mainContent[0].childNodes.getElementsByTagName("p")[0].childNodes;
+for(var i=0,j=0;i<mainContentNodesP.length&&j<3;i++){
+ if(mainContentNodesP[i].tagName=="A"){
+  pageHeader[0].innerHTML+='<a href="'+mainContentNodesP[i].href+'" class="btn">'+mainContentNodesP[i].innerHTML+'</a>';
+  mainContentNodesP[i].parentNode.removeChild(mainContentNodesP[i]);
  }
 }
 
+/* 由于github的page中md，居然不支持表格！所以插入这段代码来兼容 */
+var smd = new SMD4();
+var p = document.getElementById("main_content").getElementsByTagName("p");
+for(var i=0;i<p.length;i++){
+ if(p[i].innerHTML){
+  p[i].innerHTML=smd.run(p[i].innerHTML);
+ }
+}
 
 
 /* 下面这段内容是shanghuo(本存储库创建者)编写的一段内容，这里只是为了减少引用，所以从原存储库直接复制了过来(特许) */
