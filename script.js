@@ -22,7 +22,7 @@ for(var i=0,k=0;i<mainContentNodes.length&&k<3;i++){
   var mainContentNodesP=mainContentNodes[i].childNodes;
   for(var j=0;j<mainContentNodesP.length&&k<3;j++,k++){
    if(mainContentNodesP[j].tagName=="A"){
-    pageHeader[0].innerHTML+='<a href="'+mainContentNodes[j].href+'" class="btn">'+mainContentNodes[j].innerHTML+'</a>';
+    pageHeader[0].innerHTML+='<a href="'+mainContentNodesP[j].href+'" class="btn">'+mainContentNodesP[j].innerHTML+'</a>';
     mainContentNodesP[j].parentNode.removeChild(mainContentNodesP[j]);
    }
   }
