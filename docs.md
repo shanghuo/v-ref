@@ -3,9 +3,9 @@ permalink: /docs.html
 ---
 # V语言文档
 
-[手册首页](https://v-ref.com/)
-[文档原文](https://vlang.io)
-[源存储库](https://github.com/vlang)
+[手册首页](/)
+[文档原文](//vlang.io)
+[源存储库](//github.com/vlang/v)
 
 ## 介绍
 
