@@ -6,11 +6,8 @@ lang: "zh_CN"
 ---
 # V语言参考手册
 
-## [v-ref.com](//v-ref.com)
-
-- V语言文档(中文翻译版) [v-ref.com/docs.html](//v-ref.com/docs.html)
-- V语言官网 [vlang.io](//vlang.io)
-- 参考手册(预计7月底前置于本站)
+[中文文档](/docs.html)
+[语言官网](//vlang.io)
 
 ## 为什么要弄这个
 
@@ -49,3 +46,5 @@ lang: "zh_CN"
 - 将v语言标准库录入参考手册
 
 附加说明：由于我的时间有限，因此这个手册的完善可能需要一个过程。欢迎各位朋友一同加入，来编写和完善手册。
+
+<script src="/script.js"></script>
