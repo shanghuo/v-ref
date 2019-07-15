@@ -10,7 +10,7 @@ var mainContent=document.getElementsByClassName("main-content");
 var mainContentNodesP=mainContent[0].getElementsByTagName("p")[0].childNodes;
 for(var i=0,j=0;i<mainContentNodesP.length&&j<3;i++){
  if(mainContentNodesP[i].tagName=="A"){
-  if(mainContentNodesP[i].href.substr(0,2)=="//"){
+  if(mainContentNodesP[i].href.substr(0,4)=="http"){
    pageHeader[0].innerHTML+='<a href="'+mainContentNodesP[i].href+'" target="_blank" class="btn">'+mainContentNodesP[i].innerHTML+'</a>';
   }
   else{
