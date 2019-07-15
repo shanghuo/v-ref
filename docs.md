@@ -7,7 +7,7 @@ lang: "zh_CN"
 # V语言文档
 
 [手册首页](/)
-[文档原文](https://vlang.io)
+[文档原文](https://vlang.io/docs)
 [源存储库](https://github.com/vlang/v)
 
 ## 介绍
