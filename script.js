@@ -17,13 +17,13 @@ for(var i=0;i<pageHeaderNodes.length;i++){
 }
 var mainContent=document.getElementsByClassName("main-content");
 var mainContentNodes=mainContent[0].childNodes;
-for(var i=0,j=0;i<mainContentNodes.length&&j<3;i++){
+for(var i=0,k=0;i<mainContentNodes.length&&k<3;i++){
  if(mainContentNodes[i].tagName=="P"){
   var mainContentNodesP=mainContentNodes[i].childNodes;
-  for(;j<3;j++){
-   if(mainContentNodesP[i].tagName=="A"){
-    pageHeader[0].innerHTML+='<a href="'+mainContentNodes[i].href+'" class="btn">'+mainContentNodes[i].innerHTML+'</a>';
-    mainContentNodesP[i].parentNode.removeChild(mainContentNodesP[i]);
+  for(var j=0;j<mainContentNodesP.length&&k<3;j++,k++){
+   if(mainContentNodesP[j].tagName=="A"){
+    pageHeader[0].innerHTML+='<a href="'+mainContentNodes[j].href+'" class="btn">'+mainContentNodes[j].innerHTML+'</a>';
+    mainContentNodesP[j].parentNode.removeChild(mainContentNodesP[j]);
    }
   }
  }
