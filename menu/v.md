@@ -8,6 +8,7 @@ lang: "zh_CN"
 
 [本站首页](/)
 [中文文档](/docs.html)
-[语言官网](https://vlang.io)
 
 - [基础函数](/v-ref/builtin.html)
+
+<script src="/script.js"></script>
