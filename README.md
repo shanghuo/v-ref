@@ -8,6 +8,7 @@ lang: "zh_CN"
 
 [中文文档](/docs.html)
 [语言官网](https://vlang.io)
+[参考手册](/menu/v.html)
 
 ## 为什么要弄这个
 
