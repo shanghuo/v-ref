@@ -6,8 +6,8 @@ lang: "zh_CN"
 ---
 # 关于-V语言参考手册
 
+[手册首页](/)
 [中文文档](/docs.html)
-[语言官网](https://vlang.io)
 [参考手册](/menu/v.html)
 
 ## 为什么要弄这个
