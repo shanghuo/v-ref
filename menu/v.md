@@ -10,5 +10,10 @@ lang: "zh_CN"
 [中文文档](/docs.html)
 
 - [基础函数](/v-ref/builtin.html)
+- [BASE64函数](/v-ref/base64.html)
+- [文件系统](/v-ref/filesystem.html)
+- [数学函数](/v-ref/math.html)
+- [时间函数](/v-ref/time.html)
+- [绘图函数](/v-ref/ui.html)
 
 <script src="/script.js"></script>
