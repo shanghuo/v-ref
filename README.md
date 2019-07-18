@@ -6,9 +6,9 @@ lang: "zh_CN"
 ---
 # 关于-V语言参考手册
 
-[手册首页](/)
-[中文文档](/docs.html)
-[参考手册](/menu/v.html)
+[手册首页](https://v-ref.com/)
+[中文文档](https://v-ref.com/docs.html)
+[参考手册](https://v-ref.com/menu/v.html)
 
 ## 为什么要弄这个
 
