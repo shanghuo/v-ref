@@ -25,6 +25,7 @@ Menu.prototype.addMenu = function (innerHTML, href) {
     a.innerHTML = innerHTML;
     a.href = href;
     a.className = "btn";
+    a.style.zIndex = "1";
     if (a.href.indexOf("v-ref.com") == -1) {
         a.target = "_blank";
     }
@@ -63,7 +64,7 @@ Menu.prototype.addSubmenu = function (a, list) {
     }
     var bgDiv = document.createElement("div");
     this.setSubmenuDivStyle(a, div)
-    this.setBgStyle(bgDiv, this.pageHeader[0]);
+    this.setBgStyle(bgDiv);
     this.setCilck(a, bgDiv, this.pageHeader[0], div);
     this.mainContent[0].appendChild(bgDiv);
     a.appendChild(div);
@@ -92,8 +93,7 @@ Menu.prototype.setSubmenuDivStyle = function (a, div) {
     div.style.top = "100%";
     div.style.zIndex = "1";
 }
-Menu.prototype.setBgStyle = function (bgDiv, bg) {
-    bg.style.zIndex = "1";
+Menu.prototype.setBgStyle = function (bgDiv) {
     bgDiv.style.position = "fixed";
     bgDiv.style.width = "100%";
     bgDiv.style.height = "0";
