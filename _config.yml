@@ -1,3 +1,2 @@
 theme: jekyll-theme-cayman
-site:
- lang: zh-CN
+site.lang: zh-CN
