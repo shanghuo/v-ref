@@ -65,7 +65,7 @@ Menu.prototype.addSubmenu = function (a, list) {
     this.setSubmenuDivStyle(a, div)
     this.setBgStyle(bgDiv);
     this.setCilck(a, bgDiv, this.pageHeader[0], div);
-    this.pageHeader[0].appendChild(bgDiv);
+    this.mainContent[0].appendChild(bgDiv);
     a.appendChild(div);
 }
 Menu.prototype.addSubmenuMenu = function (div, innerHTML, href) {
