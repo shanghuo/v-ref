@@ -65,7 +65,7 @@ Menu.prototype.addSubmenu = function (a, list) {
     this.setSubmenuDivStyle(a, div)
     this.setBgStyle(bgDiv);
     this.setCilck(a, bgDiv, this.pageHeader[0], div);
-    div.appendChild(bgDiv);
+    this.pageHeader[0].appendChild(bgDiv);
     a.appendChild(div);
 }
 Menu.prototype.addSubmenuMenu = function (div, innerHTML, href) {
@@ -113,7 +113,7 @@ Menu.prototype.setCilck = function (a, bgDiv, bg, div) {
         div.style.display = "block";
         bgDiv.style.width = "100%";
     }
-    bgDiv.onmouseover = bgDiv.onclick = function () {
+    a.onmouseout = bgDiv.onclick = function () {
         setTimeout(function () {
             div.style.display = "none";
             bgDiv.style.width = "0";
