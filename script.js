@@ -113,7 +113,7 @@ Menu.prototype.setCilck = function (a, bgDiv, bg, div) {
         div.style.display = "block";
         bgDiv.style.width = "100%";
     }
-    div.onmouseover = bgDiv.onclick = function () {
+    bgDiv.onmouseover = bgDiv.onclick = function () {
         setTimeout(function () {
             div.style.display = "none";
             bgDiv.style.width = "0";
