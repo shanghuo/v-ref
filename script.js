@@ -95,10 +95,9 @@ Menu.prototype.setSubmenuDivStyle = function (a, div) {
 Menu.prototype.setBgStyle = function (bgDiv) {
     bgDiv.style.position = "fixed";
     bgDiv.style.width = "100%";
-    bgDiv.style.height = "100%";
+    bgDiv.style.height = "0";
     bgDiv.style.left = "0";
     bgDiv.style.top = "0";
-    bgDiv.style.zIndex = "-1";
     bgDiv.style.backgroundImage = "linear-gradient(120deg, #155799, #159957)";
     bgDiv.style.backgroundRepeat = "no-repeat";
     bgDiv.style.backgroundAttachment = "fixed";
@@ -111,12 +110,12 @@ Menu.prototype.setCilck = function (a, bgDiv, bg, div) {
     a.onmouseover = a.onclick = function () {
         bg.style.backgroundAttachment = "fixed";
         div.style.display = "block";
-        bgDiv.style.width = "100%";
+        bgDiv.style.height = "100%";
     }
-    a.onmouseout = bgDiv.onclick = function () {
+    bgDiv.onmouseover = bgDiv.onclick = function () {
         setTimeout(function () {
             div.style.display = "none";
-            bgDiv.style.width = "0";
+            bgDiv.style.height = "0";
         }, 0);
         bg.style.backgroundAttachment = "scroll";
     }
