@@ -63,7 +63,7 @@ Menu.prototype.addSubmenu = function (a, list) {
     }
     var bgDiv = document.createElement("div");
     this.setSubmenuDivStyle(a, div)
-    this.setBgStyle(bgDiv);
+    this.setBgStyle(bgDiv, this.pageHeader[0]);
     this.setCilck(a, bgDiv, this.pageHeader[0], div);
     this.mainContent[0].appendChild(bgDiv);
     a.appendChild(div);
@@ -92,7 +92,8 @@ Menu.prototype.setSubmenuDivStyle = function (a, div) {
     div.style.top = "100%";
     div.style.zIndex = "1";
 }
-Menu.prototype.setBgStyle = function (bgDiv) {
+Menu.prototype.setBgStyle = function (bgDiv, bg) {
+    bg.style.zIndex = "1";
     bgDiv.style.position = "fixed";
     bgDiv.style.width = "100%";
     bgDiv.style.height = "0";
