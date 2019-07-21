@@ -82,6 +82,7 @@ Menu.prototype.setSubmenuStyle = function (a) {
     a.style.display = "block";
     a.style.width = "100%";
     a.style.borderRadius = "0px";
+    a.style.borderTop = "0";
 }
 Menu.prototype.setSubmenuDivStyle = function (a, div) {
     a.style.position = "relative";
@@ -102,19 +103,22 @@ Menu.prototype.setBgStyle = function (bgDiv) {
     bgDiv.style.backgroundRepeat = "no-repeat";
     bgDiv.style.backgroundAttachment = "fixed";
     bgDiv.style.marginBottom = "1em";
-    bgDiv.style.opacity = "0.6";
+    bgDiv.style.opacity = "0.8";
+    bgDiv.style.transition = "all 1s";
 }
 Menu.prototype.setCilck = function (a, bgDiv, bg, div) {
     div.style.display = "none";
-    a.onclick = function () {
+    a.onmouseover = a.onclick = function () {
         bg.style.backgroundAttachment = "fixed";
         div.style.display = "block";
+        bgDiv.style.width = "100%";
     }
-    bgDiv.onclick = function () {
+    div.onmouseout = bgDiv.onclick = function () {
         setTimeout(function () {
             div.style.display = "none";
+            bgDiv.style.width = "0";
         }, 0);
-        pageHeader[0].style.backgroundAttachment = "scroll";
+        bg.style.backgroundAttachment = "scroll";
     }
     a.href = "javascript:";
 }
