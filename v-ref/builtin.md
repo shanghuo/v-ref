@@ -91,9 +91,95 @@ with|用来替换的文本
 **返回值**
 一个被替换后的字符串
 
-fn (s string) to_i() int
+### 示例
 
+```
+fn main(){
+    str:='hello world'
+    res:=str.replace('hello','hi')
+    println(res)
+}
+```
+
+以上代码将输出
+
+```
+hi world
+```
+
+## to_i()
+
+将字符串转换为整数
+
+### 语法
+
+```
+fn (s string) to_i() int
+```
+
+参数|描述
+---|---
+ |一个字符串对象，把这个字符串转换为整数
+
+**返回值**
+
+字符串转换为int类型的结果
+
+**注意**
+
+- 这个方法在编写参考手册时，未在V源码中找到，但出现在了V语言的官网中
+- 尝试用`int()`代替，但该方法对于非数字对象会丢弃
+
+### 示例
+
+```
+fn main(){
+    str:='123'
+    res:=str.int()
+    println(res+1)
+}
+```
+
+以上代码将输出
+
+```
+124
+```
+
+## split()
+
+把字符串分割为字符串数组
+
+### 语法
+
+```
 fn (s string) split(delim string) []string
+```
+
+参数|描述
+---|---
+ |一个字符串对象，作为将被分割的字符串
+delim|一个分割字符串的标志(子字符串)
+
+**返回值**
+
+分割后的字符串数组
+
+### 示例
+
+```
+fn main(){
+    str:='hello world, hi world!'
+    res:=str.split('world')
+    println(res)
+}
+```
+
+以上代码将输出
+
+```
+["hello", ", hi", "!"]
+```
 
 fn (s string) split_into_lines() []string
 
