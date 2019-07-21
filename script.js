@@ -25,6 +25,7 @@ Menu.prototype.addMenu = function (innerHTML, href) {
     a.innerHTML = innerHTML;
     a.href = href;
     a.className = "btn";
+    a.style.position = "relative";
     a.style.zIndex = "1";
     if (a.href.indexOf("v-ref.com") == -1) {
         a.target = "_blank";
@@ -86,7 +87,6 @@ Menu.prototype.setSubmenuStyle = function (a) {
     a.style.borderTop = "0";
 }
 Menu.prototype.setSubmenuDivStyle = function (a, div) {
-    a.style.position = "relative";
     div.style.position = "absolute";
     div.style.left = "-1px";
     div.style.right = "-1px";
