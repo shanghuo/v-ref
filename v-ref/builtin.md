@@ -160,11 +160,117 @@ fn main(){
 ["hello", ", hi", "!"]
 ```
 
+## split_into_lines()
+
+把字符串按行分割为字符串数组
+
+### 语法
+
+```
 fn (s string) split_into_lines() []string
+```
 
+参数|描述
+---|---
+ |一个字符串对象，作为将被分割的字符串
+
+**返回值**
+
+将字符串按行分割后，得到的字符串数组
+
+### 示例
+
+```
+fn main(){
+    str:='hello world\nhi world!'
+    res:=str.split_into_lines()
+    println(res)
+}
+```
+
+以上代码将输出
+
+```
+["hello world", "hi world!"]
+```
+
+## left()
+
+提取字符串左侧N个字符
+
+### 语法
+
+```
 fn (s string) left(n int) string
+```
 
+参数|描述
+---|---
+ |一个字符串，作为将被截取的字符串
+n|一个整数，截取后的字符串位数
+
+**返回值**
+
+截取后的字符串
+
+**注意**
+这不会产生新的字符串。
+因为：字符串是不可变的。这意味着子字符串函数非常有效： 不执行复制，不需要额外的分配
+
+### 示例
+
+```
+fn main(){
+    str:='hello world'
+    res:=str.left(7)
+    println(res)
+}
+```
+
+以上代码将输出
+
+```
+hello w
+```
+
+## right()
+
+提取字符串右侧N个字符
+
+### 语法
+
+```
 fn (s string) right(n int) string
+```
+
+参数|描述
+---|---
+ |一个字符串，作为将被截取的字符串
+n|一个整数N，从字符串第N位开始截取
+
+**返回值**
+
+截取后的字符串
+
+**注意**
+这不会产生新的字符串。
+因为：字符串是不可变的。这意味着子字符串函数非常有效： 不执行复制，不需要额外的分配
+
+### 示例
+
+```
+fn main(){
+    str:='hello world'
+    res:=str.right(7)
+    println(res)
+}
+```
+
+以上代码将输出
+
+```
+orld
+```
 
 fn (s string) substr(start, end int) string
 
