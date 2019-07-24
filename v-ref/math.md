@@ -28,6 +28,4 @@ fn sin(a f64) f64
 
 fn sqrt(a f64) f64
 
-<script src="/script.js"></script
-  
-tt
+<script src="/script.js"></script>
