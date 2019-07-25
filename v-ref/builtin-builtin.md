@@ -12,7 +12,7 @@ lang: "zh_CN"
 
 ## exit()
 
-TODO
+结束程序的运行并返回指定代码
 
 ### 语法
 
@@ -22,11 +22,11 @@ pub fn exit(code int) {
 
 参数|描述
 ---|---
-code|TODO
+code|一个程序结束后返回的状态码(整数)
 
 **注意**
 
-TODO
+通常0表示正常，-1表示异常
 
 ### 示例
 
@@ -83,9 +83,6 @@ TODO
 ```
 pub fn print_backtrace() {
 ```
-
-参数|描述
----|---
 
 **注意**
 
@@ -320,5 +317,4 @@ TODO
 ```
 TODO
 ```
-
 <script src="/script.js"></script>
