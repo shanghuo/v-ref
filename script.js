@@ -133,20 +133,23 @@ var arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script 
 var readID=0;
 function read(num){
  if(num==0)num=1;
+ readID=num;
  var str='<table><tr><th>目录</th></tr>';
  for(var i=1;i<arr.length-1;i+=2){
   str+='<tr><td onclick="read('+i+')">'+arr[i]+'</td></tr>';
  }
- str+='<tr><td onclick="read(-1)">显示原始完整页面</td></tr></table>'
  if(num!=-1){
+  str+='<tr><td onclick="read(-1)">显示原始页面</td></tr></table>';
   doc.innerHTML='<h2>'+arr[num]+'</h2>'+arr[num+1]+str;
+  scrollTo(0,0);
+  history.pushState({},'','#'+arr[num]);
  }
  else{
+  str+='</table>';
   doc.innerHTML=raw+str;
+  scrollTo(0,0);
+  history.pushState({},'','#');
  }
- scrollTo(0,0);
- history.pushState({},'','#'+arr[num]);
- readID=num;
 }
 function getReadID(name){
  name=decodeURI(name);
