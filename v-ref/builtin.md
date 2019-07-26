@@ -272,6 +272,8 @@ fn main(){
 orld
 ```
 
+<script src="/script.js"></script>
+
 fn (s string) substr(start, end int) string
 
 fn (s string) index(p string) int
@@ -320,5 +322,3 @@ fn malloc(n int) byteptr
 fn error(s string) Option
 
 fn (m mut map) sort()
-
-<script src="/script.js"></script>
