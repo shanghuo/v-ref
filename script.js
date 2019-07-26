@@ -67,7 +67,7 @@ Menu.prototype.addSubmenu = function (a, list) {
     this.setSubmenuDivStyle(a, div)
     this.setBgStyle(bgDiv);
     this.setCilck(a, bgDiv, this.pageHeader[0], div);
-    this.mainContent[0].appendChild(bgDiv);
+    document.body.appendChild(bgDiv);
     a.appendChild(div);
 }
 Menu.prototype.addSubmenuMenu = function (div, innerHTML, href) {
@@ -145,7 +145,7 @@ function read(num){
   doc.innerHTML=raw+str;
  }
  scrollTo(0,0);
- history.pushState({},arr[num],'#'+arr[num]);
+ history.pushState({},'','#'+arr[num]);
  readID=num;
 }
 function getReadID(name){
