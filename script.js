@@ -125,3 +125,42 @@ Menu.prototype.setCilck = function (a, bgDiv, bg, div) {
 
 var m = new Menu();
 m.setMenu();
+
+/* 页面内生成目录(暂未针对函数方法优化、暂未处理目录所在页面布局) */
+var doc=document.getElementsByClassName("main-content")[0];
+var raw=doc.innerHTML;
+var arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script src="\/script"><\/script>/);
+var readID=0;
+function read(num){
+ if(num==0)num=1;
+ var str='<table><tr><th>目录</th></tr>';
+ for(var i=1;i<arr.length-1;i+=2){
+  str+='<tr><td onclick="read('+i+')">'+arr[i]+'</td></tr>';
+ }
+ str+='<tr><td onclick="read(-1)">显示原始完整页面</td></tr></table>'
+ if(num!=-1){
+  doc.innerHTML='<h2>'+arr[num]+'</h2>'+arr[num+1]+str;
+ }
+ else{
+  doc.innerHTML=raw+str;
+ }
+ scrollTo(0,0);
+ history.pushState({},arr[num],'#'+arr[num]);
+ readID=num;
+}
+function getReadID(name){
+ name=decodeURI(name);
+ for(var i=1;i<arr.length-1;i+=2){
+  if(arr[i]==name)return i;
+ }
+ return 0;
+}
+read(getReadID(window.location.href.split('#')[1]));
+function main(){
+ var id=getReadID(window.location.href.split('#')[1]);
+ if(id!=readID&&id!=0){
+  read(id);
+ }
+ setTimeout(main,500);
+}
+main();
