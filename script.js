@@ -142,7 +142,7 @@ function read(num){
  }
  else{
   str+='</table>';
-  doc.innerHTML=raw+str;
+  doc.innerHTML=str+raw;
   scrollTo(0,0);
   history.pushState({},'','#');
  }
