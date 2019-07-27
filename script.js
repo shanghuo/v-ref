@@ -165,7 +165,7 @@ var doc,raw,arr,readID;
 setTimeout(function(){
 doc=document.getElementsByClassName("main-content")[0];
 raw=doc.innerHTML;
-arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script src="\/script"><\/script>/);
+arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script[^>]*>\s*<\/script>/);
 readID=0;
 read(getReadID(window.location.href.split('#')[1]));
 main();
