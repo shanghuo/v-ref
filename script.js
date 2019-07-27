@@ -127,6 +127,7 @@ var m = new Menu();
 m.setMenu();
 
 /* 页面内生成目录(暂未针对函数方法优化、暂未处理目录所在页面布局) */
+setTimeout(function(){
 var doc=document.getElementsByClassName("main-content")[0];
 var raw=doc.innerHTML;
 var arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script src="\/script"><\/script>/);
@@ -167,3 +168,4 @@ function main(){
  setTimeout(main,500);
 }
 main();
+},0);
