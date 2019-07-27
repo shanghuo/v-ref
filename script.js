@@ -127,11 +127,6 @@ var m = new Menu();
 m.setMenu();
 
 /* 页面内生成目录(暂未针对函数方法优化、暂未处理目录所在页面布局) */
-setTimeout(function(){
-var doc=document.getElementsByClassName("main-content")[0];
-var raw=doc.innerHTML;
-var arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script src="\/script"><\/script>/);
-var readID=0;
 function read(num){
  if(num==0)num=1;
  readID=num;
@@ -159,7 +154,6 @@ function getReadID(name){
  }
  return 0;
 }
-read(getReadID(window.location.href.split('#')[1]));
 function main(){
  var id=getReadID(window.location.href.split('#')[1]);
  if(id!=readID&&id!=0){
@@ -167,5 +161,12 @@ function main(){
  }
  setTimeout(main,500);
 }
+var doc,raw,arr,readID;
+setTimeout(function(){
+doc=document.getElementsByClassName("main-content")[0];
+raw=doc.innerHTML;
+arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script src="\/script"><\/script>/);
+readID=0;
+read(getReadID(window.location.href.split('#')[1]));
 main();
 },0);
