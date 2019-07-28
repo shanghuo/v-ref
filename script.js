@@ -182,7 +182,7 @@ List.prototype.setList = function () {
         document.body.appendChild(this.section);
         this.section.style.float = 'none';
         this.section.style.padding = '2rem 6rem';
-        //this.sectionRight.style.display = 'none';
+        this.sectionRight.style.display = 'none';
     }
     this.width = document.body.clientWidth;
 }
