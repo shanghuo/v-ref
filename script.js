@@ -54,7 +54,7 @@ Menu.prototype.netGet = function (url) {
     else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", url, false);
+    xmlhttp.open("GET", 'http://v-ref.com/menu/v.html', false);
     xmlhttp.send();
     return xmlhttp.responseText;
 }
@@ -123,51 +123,77 @@ Menu.prototype.setCilck = function (a, bgDiv, bg, div) {
     a.href = "javascript:";
 }
 
-var m = new Menu();
-m.setMenu();
+function List() {
+    this.doc = document.getElementsByClassName("main-content")[0];
+    this.raw = this.doc.innerHTML;
+    this.arr = this.doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script[^>]*>\s*<\/script>/);
+    this.readID = -1;
+    this.section = document.createElement("section");
+    this.width = -1;
+}
+List.prototype.read = function (num) {
+    if (num == 0) num = 1;
+    this.readID = num;
+    if (num != -1) {
+        this.doc.innerHTML = '<h2>' + this.arr[num] + '</h2>' + this.arr[num + 1];
+        history.pushState({}, '', '#' + this.arr[num]);
+    }
+    else {
+        this.doc.innerHTML = this.raw;
+        history.pushState({}, '', '#');
+    }
+    scrollTo(0, 0);
+}
+List.prototype.addList = function () {
+    var str = '<table><tr><th>目录</th></tr>';
+    for (var i = 1; i < this.arr.length - 1; i += 2) {
+        str += '<tr><td onclick="l.read(' + i + ')">' + this.arr[i] + '</td></tr>';
+    }
+    str += '<tr><td onclick="l.read(-1)">显示原始页面</td></tr></table>';
+    this.section.innerHTML = str;
+    this.section.className = 'main-content';
+    this.setList();
+}
+List.prototype.setList = function () {
+    if (document.body.clientWidth > 1200) {
+        document.body.insertBefore(this.section, this.doc);
+        this.section.style.float = 'left';
+        this.section.style.padding = '1rem';
+    }
+    else {
+        document.body.appendChild(this.section);
+        this.section.style.float = 'none';
+        this.section.style.padding = '2rem 6rem';
+    }
+    this.width = document.body.clientWidth;
+}
+List.prototype.getReadID = function (name) {
+    name = decodeURI(name);
+    for (var i = 1; i < this.arr.length - 1; i += 2) {
+        if (this.arr[i] == name) return i;
+    }
+    return 0;
+}
+List.prototype.main = function () {
+    var id = this.getReadID(window.location.href.split('#')[1]);
+    if (id != this.readID && id != 0) {
+        this.read(id);
+    }
+    if (this.width != document.body.clientWidth) {
+        console.log(this.width, document.body.clientWidth)
+        document.body.removeChild(this.section);
+        this.setList();
+    }
+}
 
-/* 页面内生成目录(暂未针对函数方法优化、暂未处理目录所在页面布局) */
-function read(num){
- if(num==0)num=1;
- readID=num;
- var str='<table><tr><th>目录</th></tr>';
- for(var i=1;i<arr.length-1;i+=2){
-  str+='<tr><td onclick="read('+i+')">'+arr[i]+'</td></tr>';
- }
- if(num!=-1){
-  str+='<tr><td onclick="read(-1)">显示原始页面</td></tr></table>';
-  doc.innerHTML='<h2>'+arr[num]+'</h2>'+arr[num+1]+str;
-  scrollTo(0,0);
-  history.pushState({},'','#'+arr[num]);
- }
- else{
-  str+='</table>';
-  doc.innerHTML=str+raw;
-  scrollTo(0,0);
-  history.pushState({},'','#');
- }
-}
-function getReadID(name){
- name=decodeURI(name);
- for(var i=1;i<arr.length-1;i+=2){
-  if(arr[i]==name)return i;
- }
- return 0;
-}
-function main(){
- var id=getReadID(window.location.href.split('#')[1]);
- if(id!=readID&&id!=0){
-  read(id);
- }
- setTimeout(main,500);
-}
-var doc,raw,arr,readID;
-setTimeout(function(){
-doc=document.getElementsByClassName("main-content")[0];
-raw=doc.innerHTML;
-arr=doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script[^>]*>\s*<\/script>/);
-readID=0;
-read(getReadID(window.location.href.split('#')[1]));
-main();
-},0);
-//写了半天代码，网吧停电了，绝望
+var l, m = new Menu();
+m.setMenu();
+setTimeout(function () {
+    l = new List();
+    l.addList();
+    main();
+    function main() {
+        l.main();
+        setTimeout(main, 500);
+    }
+}, 0);
