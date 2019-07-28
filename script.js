@@ -134,7 +134,7 @@ function List() {
 List.prototype.read = function (num) {
     if (num == 0) num = 1;
     this.readID = num;
-    if (num != -1 && this.arr.length >= 2) {
+    if (num != -1 && this.arr.length > 2) {
         this.doc.innerHTML = '<h2>' + this.arr[num] + '</h2>' + this.arr[num + 1];
         history.pushState({}, '', '#' + this.arr[num]);
     }
