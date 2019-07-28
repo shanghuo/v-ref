@@ -54,7 +54,7 @@ Menu.prototype.netGet = function (url) {
     else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET", 'http://v-ref.com/menu/v.html', false);
+    xmlhttp.open("GET", url, false);
     xmlhttp.send();
     return xmlhttp.responseText;
 }
@@ -176,7 +176,7 @@ List.prototype.getReadID = function (name) {
 }
 List.prototype.main = function () {
     var id = this.getReadID(window.location.href.split('#')[1]);
-    if (id != this.readID && id != 0) {
+    if (id != this.readID && id != 0 || this.readID == -1) {
         this.read(id);
     }
     if (this.width != document.body.clientWidth) {
