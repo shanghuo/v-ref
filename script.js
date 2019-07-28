@@ -131,6 +131,7 @@ function List() {
     this.arr = this.doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script[^>]*>\s*<\/script>/);
     this.readID = 0;
     this.section = document.createElement("section");
+    this.sectionRight = document.createElement("section");
     this.width = -1;
 }
 List.prototype.read = function (num) {
@@ -152,15 +153,19 @@ List.prototype.addList = function (menu) {
         str += '<tr><td onclick="l.read(' + i + ')">' + this.arr[i] + '</td></tr>';
     }
     str += '<tr><td onclick="l.read(-1)">显示原始页面</td></tr></table>';
-    if (menu){
-        str += '<table style="float:right;"><tr><th>手册目录</th></tr>';
-        for (var i = 1; i < menu.length; i ++) {
-            str += '<tr><td onclick=\'window.location.href="'+menu[i].href+'";\'>'+menu[i].innerHTML+'</td></tr>';
-        }
-        str += '</table>';
-    }
     this.section.innerHTML = str;
     this.section.className = 'main-content';
+    this.addMenu(menu);
+}
+List.prototype.addMenu = function (menu) {
+    if (menu.length == 0)return;
+    str = '<table><tr><th>手册目录</th></tr>';
+    for (var i = 1; i < menu.length; i ++) {
+        str += '<tr><td onclick=\'window.location.href="'+menu[i].href+'";\'>'+menu[i].innerHTML+'</td></tr>';
+    }
+    str += '</table>';
+    this.sectionRight.innerHTML = str;
+    this.sectionRight.className = 'main-content';
     this.setList();
 }
 List.prototype.setList = function () {
@@ -168,11 +173,15 @@ List.prototype.setList = function () {
         document.body.insertBefore(this.section, this.doc);
         this.section.style.float = 'left';
         this.section.style.padding = '1rem';
+        this.sectionRight.style.float = 'right';
+        this.sectionRight.style.padding = '1rem';
+        this.sectionRight.style.display = 'block';
     }
     else {
         document.body.appendChild(this.section);
         this.section.style.float = 'none';
         this.section.style.padding = '2rem 6rem';
+        this.sectionRight.style.display = 'none';
     }
     this.width = document.body.clientWidth;
 }
