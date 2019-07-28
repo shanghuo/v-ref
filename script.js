@@ -170,3 +170,4 @@ readID=0;
 read(getReadID(window.location.href.split('#')[1]));
 main();
 },0);
+//写了半天代码，网吧停电了，绝望
