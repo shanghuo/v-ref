@@ -166,6 +166,9 @@ List.prototype.addMenu = function (menu) {
     str += '</table>';
     this.sectionRight.innerHTML = str;
     this.sectionRight.className = 'main-content';
+    document.body.insertBefore(this.sectionRight, this.doc);
+    this.sectionRight.style.float = 'right';
+    this.sectionRight.style.padding = '1rem';
     this.setList();
 }
 List.prototype.setList = function () {
@@ -173,8 +176,6 @@ List.prototype.setList = function () {
         document.body.insertBefore(this.section, this.doc);
         this.section.style.float = 'left';
         this.section.style.padding = '1rem';
-        this.sectionRight.style.float = 'right';
-        this.sectionRight.style.padding = '1rem';
         this.sectionRight.style.display = 'block';
     }
     else {
