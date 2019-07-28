@@ -127,14 +127,14 @@ function List() {
     this.doc = document.getElementsByClassName("main-content")[0];
     this.raw = this.doc.innerHTML;
     this.arr = this.doc.innerHTML.split(/(?:<h1(?:(?!<h2)[\s\S])*)?<h2[^>]*>|<\/h2>|<script[^>]*>\s*<\/script>/);
-    this.readID = -1;
+    this.readID = 0;
     this.section = document.createElement("section");
     this.width = -1;
 }
 List.prototype.read = function (num) {
     if (num == 0) num = 1;
     this.readID = num;
-    if (num != -1) {
+    if (num != -1 && this.arr.length >= 2) {
         this.doc.innerHTML = '<h2>' + this.arr[num] + '</h2>' + this.arr[num + 1];
         history.pushState({}, '', '#' + this.arr[num]);
     }
@@ -176,7 +176,7 @@ List.prototype.getReadID = function (name) {
 }
 List.prototype.main = function () {
     var id = this.getReadID(window.location.href.split('#')[1]);
-    if (id != this.readID && id != 0 || this.readID == -1) {
+    if (id != this.readID && id != 0 || this.readID == 0) {
         this.read(id);
     }
     if (this.width != document.body.clientWidth) {
