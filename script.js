@@ -1,6 +1,7 @@
 function Menu() {
     this.pageHeader = document.getElementsByClassName("page-header");
     this.mainContent = document.getElementsByClassName("main-content");
+    this.menu = [];
 }
 Menu.prototype.removeMenu = function () {
     var pageHeaderNodes = this.pageHeader[0].childNodes;
@@ -74,6 +75,7 @@ Menu.prototype.addSubmenuMenu = function (div, innerHTML, href) {
     var a = document.createElement("a");
     a.innerHTML = innerHTML;
     a.href = href;
+    this.menu.push({innerHTML: innerHTML, href: href});
     this.setSubmenuStyle(a);
     div.appendChild(a);
 }
@@ -144,12 +146,19 @@ List.prototype.read = function (num) {
     }
     scrollTo(0, 0);
 }
-List.prototype.addList = function () {
+List.prototype.addList = function (menu) {
     var str = '<table><tr><th>目录</th></tr>';
     for (var i = 1; i < this.arr.length - 1; i += 2) {
         str += '<tr><td onclick="l.read(' + i + ')">' + this.arr[i] + '</td></tr>';
     }
     str += '<tr><td onclick="l.read(-1)">显示原始页面</td></tr></table>';
+    if (menu){
+        str += '<table style="float:right;"><tr><th>手册目录</th></tr>';
+        for (var i = 1; i < menu.length; i ++) {
+            str += '<tr><td onclick=\'window.location.href="'+menu[i].href+'";\'>'+menu[i].innerHTML+'</td></tr>';
+        }
+        str += '</table>';
+    }
     this.section.innerHTML = str;
     this.section.className = 'main-content';
     this.setList();
@@ -180,17 +189,17 @@ List.prototype.main = function () {
         this.read(id);
     }
     if (this.width != document.body.clientWidth) {
-        console.log(this.width, document.body.clientWidth)
         document.body.removeChild(this.section);
         this.setList();
     }
 }
 
-var l, m = new Menu();
-m.setMenu();
+var l, m;
 setTimeout(function () {
+    m = new Menu();
+    m.setMenu();
     l = new List();
-    l.addList();
+    l.addList(m.menu);
     main();
     function main() {
         l.main();
