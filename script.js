@@ -161,7 +161,7 @@ List.prototype.addList = function (menu) {
 List.prototype.addMenu = function (menu) {
     if (menu.length == 0)return;
     str = '<table><tr><th>手册目录</th></tr>';
-    for (var i = 1; i < menu.length; i ++) {
+    for (var i = 0; i < menu.length; i ++) {
         str += '<tr><td onclick=\'window.location.href="'+menu[i].href+'";\'>'+menu[i].innerHTML+'</td></tr>';
     }
     str += '</table>';
