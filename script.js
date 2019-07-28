@@ -155,6 +155,7 @@ List.prototype.addList = function (menu) {
     str += '<tr><td onclick="l.read(-1)">显示原始页面</td></tr></table>';
     this.section.innerHTML = str;
     this.section.className = 'main-content';
+    this.setList();
     this.addMenu(menu);
 }
 List.prototype.addMenu = function (menu) {
@@ -166,10 +167,9 @@ List.prototype.addMenu = function (menu) {
     str += '</table>';
     this.sectionRight.innerHTML = str;
     this.sectionRight.className = 'main-content';
-    document.body.insertBefore(this.sectionRight, this.doc);
     this.sectionRight.style.float = 'right';
     this.sectionRight.style.padding = '1rem';
-    this.setList();
+    document.body.insertBefore(this.sectionRight, this.section);
 }
 List.prototype.setList = function () {
     if (document.body.clientWidth > 1200) {
