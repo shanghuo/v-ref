@@ -148,12 +148,29 @@ List.prototype.read = function (num) {
     scrollTo(0, 0);
 }
 List.prototype.addList = function (menu) {
-    var str = '<table><tr><th>目录</th></tr>';
+    var table = document.createElement("table");
+    var thtr = document.createElement("tr");
+    var th = document.createElement("th");
+    th.innerHTML = '目录';
+    thtr.appendChild(th);
+    table.appendChild(thtr);
     for (var i = 1; i < this.arr.length - 1; i += 2) {
-        str += '<tr><td onclick="l.read(' + i + ')">' + this.arr[i] + '</td></tr>';
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        td.innerHTML = this.arr[i];
+        td.onclick = this.read(i);
+        td.style.cursor = "pointer";
+        tr.appendChild(td);
+        table.appendChild(tr);
     }
-    str += '<tr><td onclick="l.read(-1)">显示原始页面</td></tr></table>';
-    this.section.innerHTML = str;
+    var tdtr = document.createElement("tr");
+    var tdtd = document.createElement("td");
+    tdtd.innerHTML = '显示原始页面';
+    tdtd.onclick = this.read(-1);
+    tdtd.style.cursor = "pointer";
+    tdtr.appendChild(tdtd);
+    table.appendChild(tdtr);
+    this.section.appendChild(table);
     this.section.className = 'main-content';
     this.setList();
     this.addMenu(menu);
@@ -162,7 +179,7 @@ List.prototype.addMenu = function (menu) {
     if (menu.length == 0)return;
     str = '<table><tr><th>手册目录</th></tr>';
     for (var i = 0; i < menu.length; i ++) {
-        str += '<tr><td onclick=\'window.location.href="'+menu[i].href+'";\'>'+menu[i].innerHTML+'</td></tr>';
+        str += '<tr><td style="cursor:pointer;" onclick=\'window.location.href="'+menu[i].href+'";\'>'+menu[i].innerHTML+'</td></tr>';
     }
     str += '</table>';
     this.sectionRight.innerHTML = str;
