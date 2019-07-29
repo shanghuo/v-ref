@@ -167,7 +167,9 @@ List.prototype.addListTr = function (table, innerHTML, i, callback) {
     var tr = document.createElement("tr");
     var td = document.createElement("td");
     td.innerHTML = innerHTML;
-    td.onclick = callback(i);
+    td.onclick = function(){
+        callback(i);
+    };
     td.style.cursor = "pointer";
     tr.appendChild(td);
     table.appendChild(tr);
