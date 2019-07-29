@@ -155,9 +155,9 @@ List.prototype.addList = function (menu) {
     tr.appendChild(th);
     table.appendChild(tr);
     for (var i = 1; i < this.arr.length - 1; i += 2) {
-        this.addListTr(table, this.arr[i], i, this.read);
+        this.addListTr(table, this.arr[i], i, this);
     }
-    this.addListTr(table, '显示原始页面', -1, this.read);
+    this.addListTr(table, '显示原始页面', -1, this);
     this.section.appendChild(table);
     this.section.className = 'main-content';
     this.setList();
@@ -168,7 +168,7 @@ List.prototype.addListTr = function (table, innerHTML, i, callback) {
     var td = document.createElement("td");
     td.innerHTML = innerHTML;
     td.onclick = function(){
-        callback(i);
+        callback.read(i);
     };
     td.style.cursor = "pointer";
     tr.appendChild(td);
