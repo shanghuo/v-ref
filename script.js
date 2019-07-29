@@ -149,31 +149,28 @@ List.prototype.read = function (num) {
 }
 List.prototype.addList = function (menu) {
     var table = document.createElement("table");
-    var thtr = document.createElement("tr");
+    var tr = document.createElement("tr");
     var th = document.createElement("th");
     th.innerHTML = '目录';
-    thtr.appendChild(th);
-    table.appendChild(thtr);
+    tr.appendChild(th);
+    table.appendChild(tr);
     for (var i = 1; i < this.arr.length - 1; i += 2) {
-        var tr = document.createElement("tr");
-        var td = document.createElement("td");
-        td.innerHTML = this.arr[i];
-        td.onclick = this.read(i);
-        td.style.cursor = "pointer";
-        tr.appendChild(td);
-        table.appendChild(tr);
+        this.addListTr(table, this.arr[i], i, this.read);
     }
-    var tdtr = document.createElement("tr");
-    var tdtd = document.createElement("td");
-    tdtd.innerHTML = '显示原始页面';
-    tdtd.onclick = this.read(-1);
-    tdtd.style.cursor = "pointer";
-    tdtr.appendChild(tdtd);
-    table.appendChild(tdtr);
+    this.addListTr(table, '显示原始页面', -1, this.read);
     this.section.appendChild(table);
     this.section.className = 'main-content';
     this.setList();
     this.addMenu(menu);
+}
+List.prototype.addListTr = function (table, innerHTML, i, callback) {
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+    td.innerHTML = innerHTML;
+    td.onclick = callback(i);
+    td.style.cursor = "pointer";
+    tr.appendChild(td);
+    table.appendChild(tr);
 }
 List.prototype.addMenu = function (menu) {
     if (menu.length == 0)return;
